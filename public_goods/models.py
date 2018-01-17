@@ -22,6 +22,22 @@ class Constants(BaseConstants):
     multiplier = 1
 
 
+    """ Example of consumption """
+    data  = {
+      "House2":750,
+      "House1":600,
+      "House3":800,
+      "House4":900,
+      "House5":1000,
+      "House6":900,
+      "House7":700,
+      "House8":900,
+      "House9":800,
+      "House10":1000,
+      "House11":700,
+      "House12":600,
+    }
+
 class Subsession(BaseSubsession):
 
     def vars_for_admin_report(self):
