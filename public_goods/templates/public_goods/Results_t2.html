@@ -6,16 +6,34 @@
 {% endblock %}
 
 {% block content %}
+  <!--
+  <p>Your remaining endowment: {{ player.consumption}}</p>
+  <p>Your contributions from this round to conservation fund were: {{player.savings}}</p>
+  <p>Your contributions from last round to conservation fund were: {{player.last_savings}}</p>
 
-    <p>Your remaining endowment: {{ player.consumption}}</p>
-    <p>Your contributions from this round to conservation fund were: {{player.savings}}</p>
-    <p>Your contributions from last round to conservation fund were: {{player.last_savings}}</p>
+  <p>Remember, contributing to the collective energy conservation goal is important to protect the environment by saving energy from fossil fuels.</p>
+  <p>Total contributions to the conservation fund to date: </td><td>{{ group.total_savings }}</p>
+  -->
+  <div id="chart"></div>
+  <div align="right">
+    {% next_button %}
+  </div>
 
-    <p>Remember, contributing to the collective energy conservation goal is important to protect the environment by saving energy from fossil fuels.</p>
-    <p>Total contributions to the conservation fund to date: </td><td>{{ group.total_savings }}</p>
+{% endblock %}
 
-    <div align="right">
-      {% next_button %}
-    </div>
 
+{% block scripts %}
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://cdn.rawgit.com/xdanielsb/Energy/e21a8fa8/base/b3/code_radial$.js"></script>
+  <script>
+  let data = [
+    {% for p in group.get_players %}
+      {name:"{{p.id_in_group}}", y : {{p.rconsumption|json}} },
+    {% endfor %}
+  ]
+  let peak = new Radial(data)
+  let myHouse = ({{player.id_in_group}}-1)
+  peak.plot("chart", myHouse, false)
+  </script>
 {% endblock %}
