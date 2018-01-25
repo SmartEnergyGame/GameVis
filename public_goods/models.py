@@ -100,6 +100,9 @@ class Group(BaseGroup):
                     p.consumption = p.participant.vars['consumption']
                     if self.round_number > self.min_round:
                         p.last_savings = p.in_round(self.round_number - self.min_round).savings
+        for p in self.get_players():
+            p.consumption = 20 - p.consumption
+            p.rconsumption = p.consumption * 1500 / 20
 
 
 
@@ -109,6 +112,7 @@ class Player(BasePlayer):
         min=0,
         doc="endowment by each player"
     )
+    rconsumption = models.FloatField()
     savings = models.CurrencyField(min=0, max=Constants.max_savings, doc="Savings by each player",choices=[c(0), c(2), c(4)])
     financial_reward = models.FloatField(min=0)
     last_savings = models.CurrencyField()
