@@ -4,10 +4,10 @@ Energy Project
 Game to study the level of contributions over time of players.
 
 
-Tutorial Implementation
+Implementation visualizations
 =======================
 
-- [Implementation](https://www.youtube.com/watch?v=57f_cUuOOmI)
+- [Implementation](https://www.youtube.com/watch?v=57f_cUuOOmI): Tutorial step by step for using the Open-Source project to implement the visualizations
 
 
 
